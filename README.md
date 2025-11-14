@@ -75,17 +75,6 @@ O programa já contém:
 
 ## 🏗️ O que falta implementar
 
-As próximas etapas obrigatórias do simulador são:
-
-### Criar o **array de frames**
-- Estruturas que representam cada quadro físico da memória
-- Cada frame deve indicar se está livre, qual página contém, e metadados úteis
-
-### Fazer funcionar a parte **sem substituição**
-- Carregar páginas enquanto houver frames livres  
-- Atualizar tabela de páginas e frames  
-- Contabilizar page hits e page faults iniciais
-
 ### Implementar os algoritmos de substituição
 Somente quando não houver mais frames livres:
 - **LRU** — remove a página menos recentemente usada  
