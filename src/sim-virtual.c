@@ -9,6 +9,15 @@ typedef struct {
     int modified;
 } page_struct;
 
+// struct para representar um frame na memória física
+typedef struct {
+    int page;
+    int free;
+    int referenced;
+    int modified;
+    unsigned long last_access;
+} frame_struct;
+
 int main(int argc, char *argv[]) {
 
     // tratamento de erro caso a pessoa n coloque argumentos suficientes
@@ -46,9 +55,15 @@ int main(int argc, char *argv[]) {
 
     printf("Total de frames = %d\n", nframes);
 
-
     // alocando memoria e criando a tabela de páginas
     page_struct *page_table = calloc(2000000, sizeof(page_struct));
+
+    //alocando memoria e criando o array de frames
+    frame_struct *frames = calloc(nframes, sizeof(frame_struct));
+
+    // inicializando os frames como livres
+    for (int i = 0; i < nframes; i++)
+        frames[i].free = 1;
 
     // abre o arquivo
     FILE *f = fopen(arquivo, "r");
