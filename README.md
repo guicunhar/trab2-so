@@ -77,19 +77,16 @@ O programa já contém:
 
 As próximas etapas obrigatórias do simulador são:
 
-### 1️⃣ Criar a estrutura da **Tabela de Páginas**
-- Cada página deve armazenar informações como: presente, frame, bits R/M etc.
-
-### 2️⃣ Criar o **array de frames**
+### Criar o **array de frames**
 - Estruturas que representam cada quadro físico da memória
 - Cada frame deve indicar se está livre, qual página contém, e metadados úteis
 
-### 3️⃣ Fazer funcionar a parte **sem substituição**
+### Fazer funcionar a parte **sem substituição**
 - Carregar páginas enquanto houver frames livres  
 - Atualizar tabela de páginas e frames  
 - Contabilizar page hits e page faults iniciais
 
-### 4️⃣ Implementar os algoritmos de substituição
+### Implementar os algoritmos de substituição
 Somente quando não houver mais frames livres:
 - **LRU** — remove a página menos recentemente usada  
 - **NRU** — usa classes baseadas nos bits R e M  

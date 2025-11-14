@@ -1,6 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// struct para representar uma página na tabela de páginas
+typedef struct {
+    int present;
+    int frame;
+    int referenced;
+    int modified;
+} page_struct;
+
 int main(int argc, char *argv[]) {
 
     // tratamento de erro caso a pessoa n coloque argumentos suficientes
@@ -31,6 +39,17 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
+    // calcular o número de frames
+    int frame_size = page_kb * 1024;
+    int mem_size = mem_mb * 1024 * 1024;
+    int nframes = mem_size / frame_size;
+
+    printf("Total de frames = %d\n", nframes);
+
+
+    // alocando memoria e criando a tabela de páginas
+    page_struct *page_table = calloc(2000000, sizeof(page_struct));
+
     // abre o arquivo
     FILE *f = fopen(arquivo, "r");
     if (!f) {
@@ -48,9 +67,18 @@ int main(int argc, char *argv[]) {
         // converter endereço lógico na pagina
         unsigned int page = addr >> s;
         printf("Página: %u\n", page);
+        
+        // verificar se a página está presente na memória
+        if (page_table[page].present) {
+            // hit
+        } else {
+            // fault
+        }
+
         break; 
     }
 
     fclose(f);
+
     return 0;
 }

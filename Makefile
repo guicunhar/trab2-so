@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -std=c11 -O2
 
 SRC = src/sim-virtual.c
-TARGET = exec/sim-virutal
+TARGET = exec/sim-virtual
 
 all: $(TARGET)
 
