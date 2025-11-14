@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[]) {
+
+    // tratamento de erro caso a pessoa n coloque argumentos suficientes
+    if (argc != 5) {
+        printf("Uso: ./sim-virtual <algoritmo> <arquivo.log> <tamanho_pagina_kb> <memoria_mb>\n");
+        return 1;
+    }
+
+    // leitura dos argumentos e tratamento de erros
+    char *algoritmo = argv[1];
+    char *arquivo = argv[2];
+    int page_kb = atoi(argv[3]);
+    int mem_mb = atoi(argv[4]);
+
+    if (page_kb != 8 && page_kb != 16 && page_kb != 32) {
+        printf("Tamanho da página deve ser 8, 16 ou 32.\n");
+        return 1;
+    }
+
+    // calcular o shift baseado no tamanho da página
+    int s;
+    if (page_kb == 8) s = 13;
+    else if (page_kb == 16) s = 14;
+    else s = 15;
+
+    if (mem_mb != 1 && mem_mb != 2 && mem_mb != 4) {
+        printf("Tamanho da memória deve ser 1, 2 ou 4.\n");
+        return 1;
+    }
+
+    // abre o arquivo
+    FILE *f = fopen(arquivo, "r");
+    if (!f) {
+        printf("Erro ao abrir arquivo.\n");
+        return 1;
+    }
+
+    // leitura do primeiro endereço e operação do arquivo
+    unsigned int addr;
+    char op;
+
+    while (fscanf(f, "%x %c", &addr, &op) == 2) {
+        printf("Endereço: %x, Operação: %c\n", addr, op);
+
+        // converter endereço lógico na pagina
+        unsigned int page = addr >> s;
+        printf("Página: %u\n", page);
+        break; 
+    }
+
+    fclose(f);
+    return 0;
+}
