@@ -1,7 +1,38 @@
+/*
+ * ═══════════════════════════════════════════════════════════════════════════
+ *  SIMULADOR DE MEMÓRIA VIRTUAL COM PAGINAÇÃO
+ *  Trabalho 2 - INF1316 - Sistemas Operacionais
+ * ═══════════════════════════════════════════════════════════════════════════
+ *
+ *  Aluno(s): Breno Braga Neves - 2310590   
+ *            Guilherme Cunha - 2320951
+
+ *  Data: Novembro de 2025
+ *  Professor: Seibel
+ *
+ *  Descrição:
+ *    Simulador de memória virtual que implementa três algoritmos clássicos
+ *    de substituição de páginas:
+ *      - LRU (Least Recently Used)
+ *      - NRU (Not Recently Used)
+ *      - Ótimo (Belady)
+ *
+ *    O simulador processa traces reais de acesso à memória e coleta
+ *    estatísticas sobre page faults e páginas escritas, permitindo
+ *    análise comparativa de desempenho entre os algoritmos.
+ *
+ *  Uso:
+ *    ./sim-virtual <algoritmo> <arquivo.log> <tam_pag_kb> <mem_mb>
+ *
+ *    Exemplo: ./sim-virtual LRU compilador.log 8 2
+ *
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <strings.h>  
+#include <strings.h>
 #include <limits.h>
 
 // struct para representar uma página na tabela de páginas
