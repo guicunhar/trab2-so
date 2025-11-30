@@ -1,0 +1,33 @@
+Resultados - Testes Rápidos
+Data: Sun Nov 30 13:27:12 -03 2025
+
+=== LRU ===
+Executando o simulador...
+Arquivo de entrada: files/compilador.log
+Tamanho da memoria física: 2 MB
+Tamanho das páginas: 8 KB
+Algoritmo de substituição: LRU
+Número de Faltas de Páginas: 21091
+Número de Páginas Escritas: 3839
+
+=== NRU ===
+Executando o simulador...
+Arquivo de entrada: files/compilador.log
+Tamanho da memoria física: 2 MB
+Tamanho das páginas: 8 KB
+Algoritmo de substituição: NRU
+Número de Faltas de Páginas: 107981
+Número de Páginas Escritas: 7549
+
+=== otimo ===
+Executando o simulador...
+Pré-processando arquivo para algoritmo ótimo...
+Total de acessos: 1000000
+Pré-processamento concluído!
+Arquivo de entrada: files/compilador.log
+Tamanho da memoria física: 2 MB
+Tamanho das páginas: 8 KB
+Algoritmo de substituição: otimo
+Número de Faltas de Páginas: 10118
+Número de Páginas Escritas: 2190
+
